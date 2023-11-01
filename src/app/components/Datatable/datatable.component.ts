@@ -4,14 +4,14 @@ import { MatTableModule } from '@angular/material/table';
 
 export interface Task {
   task: string;
-  document: number;
+  document: string;
   responsible: string;
   term: string;
   status: string;
 }
 
 const ELEMENT_DATA: Task[] = [
-  { task: 'Tarefa 01', document: 1225484114, responsible: 'admin', term: new Date().toLocaleDateString(), status: 'Expirado' },
+  { task: 'Tarefa 01', document: '1225484114', responsible: 'admin', term: new Date().toLocaleDateString(), status: 'Expirado' },
 ];
 
 
