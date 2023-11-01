@@ -45,6 +45,15 @@ p {
   align-items: center;
 }
 
+.blockActions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  width: 20rem;
+}
+
 button {
   background-color: #5b5b98;
   border: none;
@@ -55,8 +64,14 @@ button {
   cursor: pointer;
   width: 9%;
   height: 2.5rem;
+  width: auto;
 }
 
 button:hover {
   text-decoration: underline;
+}
+
+.selectFilter {
+  background-color: #fff;
+  width: 2rem;
 }

@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from 'src/app/services/task/task.service';
 
+
 @Component({
-  selector: 'app-tarefas',
-  templateUrl: './tarefas.component.html',
-  styleUrls: ['./tarefas.component.css'],
+    selector: 'app-tarefas',
+    templateUrl: './tarefas.component.html',
+    styleUrls: ['./tarefas.component.css'],
 })
 export class TarefasComponent implements OnInit {
 
   Tasks: any[] = []
 
-  constructor(private Task: TaskService) {
-
-  }
+  constructor(private Task: TaskService) {}
 
   ngOnInit(): void {
     this.loadTasksFromSessionStorage();
@@ -20,7 +19,6 @@ export class TarefasComponent implements OnInit {
 
 
   loadTasksFromSessionStorage() {
-    console.log(this.Task.getTasks() || []);
     this.Tasks = this.Task.getTasks() || [];
   }
 

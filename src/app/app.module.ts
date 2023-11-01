@@ -19,10 +19,10 @@ import { TarefasComponent } from './pages/tarefas/tarefas.component';
 @NgModule({
   declarations: [
     AppComponent,
-    TarefasComponent,
     LoginComponent,
     ApplayoutComponent,
     CadastroComponent,
+    TarefasComponent,
 
   ],
   imports: [

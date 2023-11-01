@@ -1,6 +1,6 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { CommonModule, formatDate } from '@angular/common';
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDialog } from '@angular/material/dialog';
@@ -9,6 +9,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { DialogComponent } from '../Dialog/dialog.component';
 
 export interface Task {
+  id: number
   task: string;
   document: string;
   responsible: string;
@@ -25,23 +26,30 @@ export interface Task {
   providers: [MatDialog],
 })
 
-export class Datatable {
+export class Datatable implements OnInit  {
   @Input() Tasks: any[] = [];
-
-  itemsPerPageLabel = 'Itens por página:';
 
   displayedColumns: string[] = ['select', 'task', 'document', 'responsible', 'term', 'status'];
   dataSource = new MatTableDataSource<Task>(this.Tasks);
   selection = new SelectionModel<Task>(true, []);
 
-  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
-
   constructor(public dialog: MatDialog) { }
 
-  ngAfterViewInit() {
-    if (this.paginator) {
+  @ViewChild('paginator') paginator!: MatPaginator;
+  ngOnInit(): void {
+    this.dataSource.paginator = this.paginator
+    console.log(this.dataSource.data, this.Tasks)
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['Tasks'] && changes['Tasks'].currentValue) {
+      this.dataSource = new MatTableDataSource<Task>(changes['Tasks'].currentValue);
       this.dataSource.paginator = this.paginator;
     }
+  }
+
+  ngAfterViewInit() {
+      this.dataSource.paginator = this.paginator;
   }
 
   isAllSelected() {
