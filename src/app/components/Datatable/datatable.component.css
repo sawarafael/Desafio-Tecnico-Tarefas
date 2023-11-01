@@ -1,0 +1,26 @@
+.concluida-chip {
+  background-color: rgb(143, 226, 143);
+  color: rgb(24, 23, 23);
+  border: 0.5rem solid rgb(143, 226, 143);
+  border-radius: 0.5rem;
+  height: 0.2em;
+  font-weight: 500;
+}
+
+.aberto-chip {
+  background-color: rgb(133, 201, 240);
+  color: rgb(24, 23, 23);
+  border: 0.5rem solid rgb(133, 201, 240);
+  border-radius: 0.5rem;
+  height: 0.2em;
+  font-weight: 500;
+}
+
+.expirado-chip {
+  background-color: rgb(236, 179, 179);
+  color: rgb(53, 53, 53);
+  border: 0.5rem solid rgb(236, 179, 179);
+  border-radius: 2rem;
+  height: 0.2em;
+  font-weight: 500;
+}
