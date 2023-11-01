@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TaskService } from 'src/app/services/task/task.service';
 
 @Component({
   selector: 'app-tarefas',
@@ -6,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tarefas.component.css'],
 })
 export class TarefasComponent implements OnInit {
-  tasks: any[] = [];
 
-  constructor() {}
+  Tasks: any[] = []
+
+  constructor(private Task: TaskService) {}
 
   ngOnInit(): void {
     this.loadTasksFromSessionStorage();
@@ -16,17 +18,7 @@ export class TarefasComponent implements OnInit {
 
 
   loadTasksFromSessionStorage() {
-    this.tasks = [];
-
-    for (let i = 0; i < sessionStorage.length; i++) {
-      const key = sessionStorage.key(i);
-
-      if (key && key.startsWith('task_')) {
-        const taskData = sessionStorage.getItem(key);
-        if (taskData !== null) {
-          this.tasks.push(JSON.parse(taskData));
-        }
-      }
-    }
+    this.Tasks = this.Task.getTasks() || [];
   }
+
 }

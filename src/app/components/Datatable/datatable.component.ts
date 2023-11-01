@@ -23,12 +23,12 @@ export interface Task {
 })
 
 export class Datatable {
-  @Input() tasks: any[] = [];
+  @Input() Tasks: any[] = [];
 
   itemsPerPageLabel = 'Itens por página:';
 
   displayedColumns: string[] = ['select', 'task', 'document', 'responsible', 'term', 'status'];
-  dataSource = new MatTableDataSource<Task>(this.tasks);
+  dataSource = new MatTableDataSource<Task>(this.Tasks);
   selection = new SelectionModel<Task>(true, []);
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;

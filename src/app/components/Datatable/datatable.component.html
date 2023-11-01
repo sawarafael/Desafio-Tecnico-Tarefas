@@ -1,5 +1,5 @@
-<div *ngIf="tasks && tasks.length > 0">
-  <table mat-table [dataSource]="tasks" class="mat-elevation-z8">
+<div *ngIf="Tasks && Tasks.length > 0">
+  <table mat-table [dataSource]="Tasks" class="mat-elevation-z8">
     <ng-container matColumnDef="select">
       <th mat-header-cell *matHeaderCellDef>
         <mat-checkbox
@@ -59,6 +59,6 @@
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
   </mat-paginator>
 </div>
-<div *ngIf="!tasks || tasks.length === 0">
+<div *ngIf="!Tasks || Tasks.length === 0">
   <p>Nenhum item disponível.</p>
 </div>
