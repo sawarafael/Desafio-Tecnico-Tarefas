@@ -91,7 +91,7 @@ export class Datatable {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('O diálogo foi fechado', result);
+
     });
   }
 }

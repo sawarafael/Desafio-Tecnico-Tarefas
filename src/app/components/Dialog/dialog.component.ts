@@ -17,9 +17,7 @@ import { TaskService } from 'src/app/services/task/task.service';
 export class DialogComponent {
   selectedStatus: string | undefined;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<DialogComponent>, private taskService: TaskService) {
-    console.log(data.id);
-  }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<DialogComponent>, private taskService: TaskService) { }
 
   formatarData(data: string): string {
     const date = new Date(data);
@@ -27,13 +25,15 @@ export class DialogComponent {
   }
 
   atualizarStatus() {
-    if (this.data.id && this.selectedStatus) {
+    if (this.selectedStatus) {
       const taskIndex = this.data.id;
       const novoStatus = this.selectedStatus;
 
       this.taskService.updateTaskStatus(taskIndex, novoStatus);
-
-      this.dialogRef.close();
     }
+  }
+
+  removerTarefa(taskId: number) {
+    this.taskService.deleteTask(taskId);
   }
 }

@@ -71,10 +71,15 @@ export class TaskService {
       task.status = status;
 
       sessionStorage.setItem(key, JSON.stringify(task));
+
+      window.location.reload()
     }
   }
 
   deleteTask(task: any) {
-    sessionStorage.removeItem(`task_${task.task}`);
+    console.log('chegando: ', task)
+    sessionStorage.removeItem(`task_${task}`);
+
+    window.location.reload()
   }
 }
