@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
       if (this.username === this.enteredUsername && this.password === this.enteredPassword) {
         this.loginError = false;
         this.router.navigateByUrl('tarefas');
-        console.log('Login efetuado com sucesso.');
       } else {
         this.loginError = true;
       }
