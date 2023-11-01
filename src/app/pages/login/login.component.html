@@ -1,1 +1,37 @@
-<p>login works!</p>
+<div class="container">
+  <h1>Acessar</h1>
+  <form class="formset" (ngSubmit)="onSubmit()">
+    <div class="fieldset">
+      <div class="inputset">
+        <label for="user" class="label">Usuário</label>
+        <input
+          type="text"
+          name="user"
+          id="user"
+          class="full"
+          placeholder="Usuário *"
+          [(ngModel)]="enteredUsername"
+          required
+        />
+      </div>
+      <div class="inputset">
+        <label for="password" class="label">Senha</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          class="full"
+          placeholder="Senha *"
+          [(ngModel)]="enteredPassword"
+          required
+        />
+      </div>
+    </div>
+    <div class="actionset">
+      <button class="full" type="submit">Acessar</button>
+    </div>
+    <div *ngIf="loginError" class="error">
+      Erro de acesso: Credenciais incorretas.
+    </div>
+  </form>
+</div>
