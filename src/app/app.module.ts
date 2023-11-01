@@ -10,8 +10,8 @@ import { AppComponent } from './app.component';
 import { ApplayoutComponent } from './components/AppLayout/applayout.component';
 import { Datatable } from './components/Datatable/datatable.component';
 import { LoginComponent } from './pages/login/login.component';
-import { TarefasComponent } from './pages/tarefas/tarefas.component';
 import { CadastroComponent } from './pages/tarefas/cadastro/cadastro.component';
+import { TarefasComponent } from './pages/tarefas/tarefas.component';
 
 @NgModule({
   declarations: [

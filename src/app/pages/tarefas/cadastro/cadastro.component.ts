@@ -23,7 +23,7 @@ export class CadastroComponent implements OnInit {
 
   async onSubmit() {
     if (this.enteredTask !== '' && this.enteredDocument !== '' && this.enteredResponsible !== '' && this.enteredTerm !== '') {
-      let sequenceNumber = parseInt(localStorage.getItem('sequenceNumber') || '0');
+      let sequenceNumber = parseInt(sessionStorage.getItem('sequenceNumber') || '0');
 
       const itemName = `task_${sequenceNumber}`;
 
@@ -35,10 +35,10 @@ export class CadastroComponent implements OnInit {
         status: this.defaultStatus
       };
 
-      localStorage.setItem(itemName, JSON.stringify(newTask));
+      sessionStorage.setItem(itemName, JSON.stringify(newTask));
 
       sequenceNumber++;
-      localStorage.setItem('sequenceNumber', sequenceNumber.toString());
+      sessionStorage.setItem('sequenceNumber', sequenceNumber.toString());
 
       this.router.navigateByUrl('tarefas');
     }

@@ -9,8 +9,9 @@
       <h3>Listagem de Tarefas</h3>
       <button class="button" routerLink="/cadastro">Nova Tarefa</button>
     </div>
+    <div class="blockFilter"></div>
     <div>
-      <app-datatable></app-datatable>
+      <app-datatable [tasks]="tasks"></app-datatable>
     </div>
   </div>
 </div>
