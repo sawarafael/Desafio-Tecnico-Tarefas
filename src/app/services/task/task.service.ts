@@ -24,9 +24,14 @@ export class TaskService {
       const key = sessionStorage.key(i);
 
       if (key && key.startsWith('task_')) {
+        const taskId = parseInt(key.replace('task_', ''), 10);
         const taskData = sessionStorage.getItem(key);
+
         if (taskData !== null) {
-          tasks.push(JSON.parse(taskData));
+          const task = JSON.parse(taskData);
+          task.id = taskId;
+
+          tasks.push(task);
         }
       }
     }
@@ -56,6 +61,7 @@ export class TaskService {
   }
 
   updateTaskStatus(taskIndex: number, status: string) {
+    console.log(taskIndex, status);
     const key = `task_${taskIndex}`;
     const taskData = sessionStorage.getItem(key);
 

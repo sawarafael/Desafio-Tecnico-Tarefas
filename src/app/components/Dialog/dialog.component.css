@@ -1,0 +1,13 @@
+.dialog-container {
+  max-width: 400px;
+}
+
+.dialog-title {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.dialog-content {
+  font-size: 1rem;
+  color: #666;
+}

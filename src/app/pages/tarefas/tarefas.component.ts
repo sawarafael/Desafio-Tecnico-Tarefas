@@ -10,7 +10,9 @@ export class TarefasComponent implements OnInit {
 
   Tasks: any[] = []
 
-  constructor(private Task: TaskService) {}
+  constructor(private Task: TaskService) {
+
+  }
 
   ngOnInit(): void {
     this.loadTasksFromSessionStorage();
@@ -18,6 +20,7 @@ export class TarefasComponent implements OnInit {
 
 
   loadTasksFromSessionStorage() {
+    console.log(this.Task.getTasks() || []);
     this.Tasks = this.Task.getTasks() || [];
   }
 

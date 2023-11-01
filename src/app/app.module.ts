@@ -6,9 +6,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormField } from '@angular/material/form-field';
 import { AppComponent } from './app.component';
 import { ApplayoutComponent } from './components/AppLayout/applayout.component';
 import { Datatable } from './components/Datatable/datatable.component';
+import { DialogComponent } from './components/Dialog/dialog.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CadastroComponent } from './pages/tarefas/cadastro/cadastro.component';
 import { TarefasComponent } from './pages/tarefas/tarefas.component';
@@ -20,8 +23,10 @@ import { TarefasComponent } from './pages/tarefas/tarefas.component';
     LoginComponent,
     ApplayoutComponent,
     CadastroComponent,
+
   ],
   imports: [
+    DialogComponent,
     Datatable,
     BrowserModule,
     AppRoutingModule,
@@ -29,8 +34,9 @@ import { TarefasComponent } from './pages/tarefas/tarefas.component';
     BrowserAnimationsModule,
     MatTableModule,
     MatChipsModule,
+    MatDialogModule,
   ],
-  providers: [],
+  providers: [MatFormField],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

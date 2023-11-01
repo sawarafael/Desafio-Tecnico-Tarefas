@@ -3,8 +3,10 @@ import { CommonModule, formatDate } from '@angular/common';
 import { Component, Input, ViewChild } from '@angular/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { DialogComponent } from '../Dialog/dialog.component';
 
 export interface Task {
   task: string;
@@ -20,6 +22,7 @@ export interface Task {
   templateUrl: 'datatable.component.html',
   standalone: true,
   imports: [MatTableModule, MatChipsModule, MatCheckboxModule, CommonModule, MatPaginatorModule],
+  providers: [MatDialog],
 })
 
 export class Datatable {
@@ -32,6 +35,8 @@ export class Datatable {
   selection = new SelectionModel<Task>(true, []);
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+
+  constructor(public dialog: MatDialog) { }
 
   ngAfterViewInit() {
     if (this.paginator) {
@@ -77,6 +82,17 @@ export class Datatable {
       default:
         return '';
     }
+  }
+
+  openTaskDetailsDialog(task: Task): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '400px',
+      data: task,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('O diálogo foi fechado', result);
+    });
   }
 }
 
