@@ -15,9 +15,10 @@ import { TaskService } from 'src/app/services/task/task.service';
 
 })
 export class DialogComponent {
-  selectedStatus: string | undefined;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<DialogComponent>, private taskService: TaskService) { }
+
+  selectedStatus: string | undefined = this.data.status;
 
   formatarData(data: string): string {
     const date = new Date(data);

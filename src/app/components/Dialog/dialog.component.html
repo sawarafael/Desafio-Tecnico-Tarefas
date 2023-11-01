@@ -1,27 +1,25 @@
-<div mat-dialog-content class="dialog-content">
-  <h1>Detalhes da Tarefa</h1>
-  <p>Tarefa: {{ data.task }}</p>
-  <p>CPF: {{ data.document }}</p>
-  <p>Responsável: {{ data.responsible }}</p>
-  <p>Prazo de Entrega: {{ formatarData(data.term) }}</p>
+<div mat-dialog-content>
+  <div class="dialogContent">
+    <h1>Detalhes da Tarefa</h1>
+    <p>Tarefa: {{ data.task }}</p>
+    <p>CPF: {{ data.document }}</p>
+    <p>Responsável: {{ data.responsible }}</p>
+    <p>Prazo de Entrega: {{ formatarData(data.term) }}</p>
 
-  <!-- Menu suspenso para selecionar o novo status -->
-  <mat-form-field>
-    <mat-label>Novo Status</mat-label>
-    <mat-select [(ngModel)]="selectedStatus" name="selectedStatus">
-      <mat-option value="Concluída">Concluída</mat-option>
-      <mat-option value="Aberto">Aberto</mat-option>
-      <mat-option value="Expirado">Expirado</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Novo Status</mat-label>
+      <mat-select [(ngModel)]="selectedStatus" name="selectedStatus">
+        <mat-option value="Concluída">Concluída</mat-option>
+        <mat-option value="Aberto">Aberto</mat-option>
+        <mat-option value="Expirado">Expirado</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div mat-dialog-actions class="actionset">
+      <button mat-button (click)="atualizarStatus()">Atualizar Status</button>
 
-  <p>Status: {{ data.status }}</p>
-
-  <div mat-dialog-actions>
-    <button mat-button (click)="atualizarStatus()">Atualizar Status</button>
-
-    <button mat-button color="warn" (click)="removerTarefa(data.id)">
-      Remover Tarefa
-    </button>
+      <button mat-button color="warn" (click)="removerTarefa(data.id)">
+        Remover Tarefa
+      </button>
+    </div>
   </div>
 </div>
