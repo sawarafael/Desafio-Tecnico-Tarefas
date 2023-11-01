@@ -41,15 +41,16 @@ export class Datatable implements OnInit  {
     console.log(this.dataSource.data, this.Tasks)
   }
 
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+
   ngOnChanges(changes: SimpleChanges) {
     if (changes['Tasks'] && changes['Tasks'].currentValue) {
       this.dataSource = new MatTableDataSource<Task>(changes['Tasks'].currentValue);
       this.dataSource.paginator = this.paginator;
     }
-  }
-
-  ngAfterViewInit() {
-      this.dataSource.paginator = this.paginator;
   }
 
   isAllSelected() {
@@ -74,7 +75,7 @@ export class Datatable implements OnInit  {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.document + 1}`;
   }
 
-  formatarData(data: string): string {
+  formatData(data: string): string {
     const date = new Date(data);
     return formatDate(date, 'dd/MM/yyyy', 'en-US');
   }
