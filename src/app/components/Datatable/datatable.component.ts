@@ -4,7 +4,10 @@ import { Component, Input, OnInit, SimpleChanges, ViewChild } from '@angular/cor
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDialog } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { DialogComponent } from '../Dialog/dialog.component';
 
@@ -22,25 +25,24 @@ export interface Task {
   styleUrls: ['datatable.component.css'],
   templateUrl: 'datatable.component.html',
   standalone: true,
-  imports: [MatTableModule, MatChipsModule, MatCheckboxModule, CommonModule, MatPaginatorModule],
+  imports: [MatTableModule, MatChipsModule, MatCheckboxModule, CommonModule, MatPaginatorModule, MatInputModule, MatFormFieldModule, MatSelectModule],
   providers: [MatDialog],
 })
 
 export class Datatable implements OnInit  {
   @Input() Tasks: any[] = [];
+  @ViewChild('paginator') paginator!: MatPaginator;
 
   displayedColumns: string[] = ['select', 'task', 'document', 'responsible', 'term', 'status'];
   dataSource = new MatTableDataSource<Task>(this.Tasks);
   selection = new SelectionModel<Task>(true, []);
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog) {}
 
-  @ViewChild('paginator') paginator!: MatPaginator;
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator
     console.log(this.dataSource.data, this.Tasks)
   }
-
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -50,6 +52,14 @@ export class Datatable implements OnInit  {
     if (changes['Tasks'] && changes['Tasks'].currentValue) {
       this.dataSource = new MatTableDataSource<Task>(changes['Tasks'].currentValue);
       this.dataSource.paginator = this.paginator;
+    }
+  }
+
+  applyFilter(selectedStatus: string): void {
+    if (selectedStatus === 'Todos') {
+      this.dataSource.filter = '';
+    } else {
+      this.dataSource.filter = selectedStatus.trim().toLowerCase();
     }
   }
 

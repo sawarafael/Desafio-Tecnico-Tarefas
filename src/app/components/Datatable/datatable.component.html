@@ -1,4 +1,17 @@
 <div *ngIf="Tasks && Tasks.length > 0">
+  <mat-form-field>
+    <mat-label>Filtro por Status</mat-label>
+    <mat-select
+      (selectionChange)="applyFilter($event.value)"
+      name="selectedStatus"
+    >
+      <mat-option value="Todos">Todos</mat-option>
+      <mat-option value="Concluída">Concluída</mat-option>
+      <mat-option value="Aberto">Aberto</mat-option>
+      <mat-option value="Expirado">Expirado</mat-option>
+    </mat-select>
+  </mat-form-field>
+
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="select">
