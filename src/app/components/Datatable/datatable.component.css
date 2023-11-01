@@ -24,3 +24,7 @@
   height: 0.2em;
   font-weight: 500;
 }
+
+table {
+  cursor: pointer;
+}
